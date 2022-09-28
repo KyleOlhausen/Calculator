@@ -87,3 +87,23 @@ button {
     font-weight: bolder;
     text-align: center;
 }
+
+.clr:hover {
+    background-color: rgb(245, 114, 114);
+}
+
+.dlt:hover {
+    background-color: rgb(238, 178, 66);
+}
+
+.op:hover {
+    background-color: rgb(112, 112, 230);
+}
+
+.equal:hover {
+    background-color: rgb(96, 175, 96);
+}
+
+.val:hover {
+    background-color: rgb(180, 133, 180);
+}
