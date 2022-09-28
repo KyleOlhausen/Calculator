@@ -10,13 +10,13 @@ const clrBtn = document.querySelector(".clr");
 const dltBtn = document.querySelector(".dlt");
 const currDisplay = document.querySelector(".curr-calc");
 const prevDisplay = document.querySelector(".prev-calc");
-
+const equalBtn = document.querySelector(".equal");
 
 numBtns.forEach((button) => button.addEventListener('click', () => appendNum(button.textContent)));
 opBtns.forEach((button) => button.addEventListener('click', () => setOperator(button.textContent)));
 clrBtn.addEventListener('click', () => clear());
 dltBtn.addEventListener('click', () => deleteNum());
-
+equalBtn.addEventListener('click', () => calculate());
 
 
 
@@ -39,7 +39,12 @@ function setOperator(operator) {
 }
 
 
-
+function calculate() {
+    prevDisplay.textContent += currValue + "=";
+    prevValue = operate(prevOperator, parseFloat(prevValue), parseFloat(currValue));
+    currDisplay.textContent = prevValue;
+    currValue = null;
+}
 
 function deleteNum() {
     //delete last digit in currdisplay and currvalue
