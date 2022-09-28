@@ -4,7 +4,7 @@ let prevValue;
 
 
 
-const numBtns = document.querySelectorAll(".num");
+const valueBtns = document.querySelectorAll(".val");
 const opBtns = document.querySelectorAll(".op")
 const clrBtn = document.querySelector(".clr");
 const dltBtn = document.querySelector(".dlt");
@@ -12,10 +12,11 @@ const currDisplay = document.querySelector(".curr-calc");
 const prevDisplay = document.querySelector(".prev-calc");
 const equalBtn = document.querySelector(".equal");
 
-numBtns.forEach((button) => button.addEventListener('click', () => appendNum(button.textContent)));
+
+valueBtns.forEach((button) => button.addEventListener('click', () => appendValue(button.textContent)));
 opBtns.forEach((button) => button.addEventListener('click', () => setOperator(button.textContent)));
 clrBtn.addEventListener('click', () => clear());
-dltBtn.addEventListener('click', () => deleteNum());
+dltBtn.addEventListener('click', () => deleteValue());
 equalBtn.addEventListener('click', () => calculate());
 
 
@@ -46,10 +47,9 @@ function calculate() {
     currValue = null;
 }
 
-function deleteNum() {
+function deleteValue() {
     currValue = currValue.slice(0, currValue.length-1);
     currDisplay.textContent = currValue;
-    //delete last digit in currdisplay and currvalue
 }
 
 function clear() {
@@ -61,18 +61,19 @@ function clear() {
 
 
 
-function appendNum(num) {
+function appendValue(value) {
     if(currDisplay.textContent.toString().length < 12){
         if(currDisplay.textContent === "Error"){
             currDisplay.textContent = "";
         }
-        currDisplay.textContent += num;
+        currDisplay.textContent += value;
         currValue = currDisplay.textContent;
     }
     else{
         currDisplay.textContent = "Error";
     }
 }
+
 
 
 
