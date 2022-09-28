@@ -1,5 +1,7 @@
+let prevOperator;
 let currValue = 0;
 let prevValue;
+
 
 
 const numBtns = document.querySelectorAll(".num");
@@ -19,9 +21,21 @@ dltBtn.addEventListener('click', () => deleteNum());
 
 
 function setOperator(operator) {
-    prevValue = currValue + operator;
-    prevDisplay.textContent = prevValue;
+    if(prevValue == null)
+    {
+        prevValue = currValue;
+        prevDisplay.textContent = prevValue + operator;
+    }
+    else if(currValue == null){
+        prevDisplay.textContent = prevValue + operator;
+    }
+    else {
+        prevValue = operate(prevOperator, parseFloat(prevValue), parseFloat(currValue));
+        prevDisplay.textContent = prevValue + operator;
+    }
+    prevOperator = operator;
     currDisplay.textContent = "";
+    currValue = null;
 }
 
 
@@ -32,7 +46,9 @@ function deleteNum() {
 }
 
 function clear() {
+    currValue = 0;
     currDisplay.textContent = "";
+    prevValue = null;
     prevDisplay.textContent = "";
 }
 
