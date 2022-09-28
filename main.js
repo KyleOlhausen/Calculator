@@ -47,6 +47,8 @@ function calculate() {
 }
 
 function deleteNum() {
+    currValue = currValue.slice(0, currValue.length-1);
+    currDisplay.textContent = currValue;
     //delete last digit in currdisplay and currvalue
 }
 
